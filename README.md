@@ -75,6 +75,19 @@ sudo apt-get update
 sudo apt-get install gcc-arm-none-eabi
 ```
 
+##### Linux -- build the compiler
+
+The toolchain can be obtained from arm and compiled locally by running:
+
+```
+cd $MY_SOFTWARE
+curl -L  https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/gcc-arm-none-eabi-10-2020-q4-major-x86_64-linux.tar.bz2 --output toolchain.tar.bz2
+tar xvfj toolchain.tar.bz2
+cd gcc-arm-none-eabi-10-2020-q4-major/
+make
+```
+
+
 #### The ST-Link software
 
 ##### Mac
@@ -149,6 +162,13 @@ Modify as required the CNC machine selection and settings in `grbl/config.h` and
 ```
 cd ~/grbl32
 make
+```
+
+If you compiled the toolchain yourself, you can build by adding the GCC_PATH using 
+
+```
+cd ~/grbl32
+make GCC\_PATH=$MY\_SOFTWARE/gcc-arm-none-eabi-10-2020-q4-major/bin
 ```
 
 ***
