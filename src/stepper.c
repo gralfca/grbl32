@@ -522,6 +522,7 @@ void Timer1Proc()
   nTimer0Out = st.step_pulse_time;
 #endif
 #ifdef STM32F103C8
+  TIM3->ARR = st.step_pulse_time;
   TIM3->CR1 |= TIM_CR1_CEN;
 #endif
   busy = true;

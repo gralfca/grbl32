@@ -32,16 +32,17 @@
 
 #ifdef DEFAULTS_3040T
 
-#define X_MICROSTEPS 16
-#define Y_MICROSTEPS 16
-#define Z_MICROSTEPS 8
+#define X_MICROSTEPS 8
+#define Y_MICROSTEPS 8
+#define Z_MICROSTEPS 4
 
 #define STEPS_PER_REV 200.0f
-#define MM_PER_REV 4.0
+#define MM_PER_REV 5.0
+#define MM_PER_REV_Z 2.0
 
 #define DEFAULT_X_STEPS_PER_MM (STEPS_PER_REV * X_MICROSTEPS / MM_PER_REV)		// $100		steps/mm
 #define DEFAULT_Y_STEPS_PER_MM (STEPS_PER_REV * Y_MICROSTEPS / MM_PER_REV)		// $101
-#define DEFAULT_Z_STEPS_PER_MM (STEPS_PER_REV * Z_MICROSTEPS / MM_PER_REV)		// $102
+#define DEFAULT_Z_STEPS_PER_MM (STEPS_PER_REV * Z_MICROSTEPS / MM_PER_REV_Z)		// $102
 
 #define DEFAULT_X_MAX_RATE 3000.0f // mm/min	$110
 #define DEFAULT_Y_MAX_RATE 3000.0f // mm/min	$111
@@ -55,10 +56,10 @@
 #define DEFAULT_Y_MAX_TRAVEL 377.0f // mm NOTE: Must be a positive value.	$131
 #define DEFAULT_Z_MAX_TRAVEL 53.0f // mm NOTE: Must be a positive value.	$132
 
-#define DEFAULT_STEP_PULSE_MICROSECONDS 4		//usec		$0
+#define DEFAULT_STEP_PULSE_MICROSECONDS 200		//usec		$0
 #define DEFAULT_STEPPER_IDLE_LOCK_TIME 25 // msec (0-254, 255 keeps steppers enabled)	$1
 #define DEFAULT_STEPPING_INVERT_MASK 0		//					$2
-#define DEFAULT_DIRECTION_INVERT_MASK 4		//					$3  invert Z
+#define DEFAULT_DIRECTION_INVERT_MASK (1<<Z_AXIS)
 #define DEFAULT_INVERT_ST_ENABLE 0 // false						$4
 #define DEFAULT_INVERT_LIMIT_PINS 0 // false					$5
 #define DEFAULT_INVERT_PROBE_PIN 0 // true						$6
